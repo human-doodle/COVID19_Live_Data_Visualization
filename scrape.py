@@ -8,6 +8,7 @@ Created on Fri Jul  3 18:29:26 2020
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
+from pandas import DataFrame
 
 #ignore certification errors
 
@@ -15,12 +16,13 @@ ctx=ssl.create_default_context()
 ctx.check_hostname=False
 ctx.verify_mode=ssl.CERT_NONE
 
-url='https://covidindia.org/maharashtra/'
+a=input("entyer the state you want to view? ")
+url='https://covidindia.org/'+a+'/'
 html=urllib.request.urlopen(url).read()
 soup=BeautifulSoup(html,'html.parser')
 
 data=[]  
-table = soup.find('table', attrs={'id':'tablepress-61'})
+table = soup.find('table')
 table_body = table.find('tbody')
 
 rows = table_body.find_all('tr')
@@ -31,3 +33,9 @@ for row in rows:
     
 for e in data:
     print(e)
+    
+
+
+colo=['District','Total Cases','Recoveries','Death','Active']
+df = DataFrame (data,columns=colo)
+print(df)
