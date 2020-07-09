@@ -21,6 +21,7 @@ url='https://covidindia.org/'+a+'/'
 html=urllib.request.urlopen(url).read()
 soup=BeautifulSoup(html,'html.parser')
 
+
 data=[]  
 table = soup.find('table')
 table_body = table.find('tbody')
@@ -30,12 +31,11 @@ for row in rows:
     cols = row.find_all('td')
     cols = [ele.text.strip() for ele in cols]
     data.append([ele for ele in cols if ele]) # Get rid of empty values
-    
-for e in data:
-    print(e)
-    
+      
 
 
 colo=['District','Total Cases','Recoveries','Death','Active']
 df = DataFrame (data,columns=colo)
 print(df)
+df.to_csv('data.csv',index=False) 
+
