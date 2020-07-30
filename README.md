@@ -4,7 +4,6 @@
 * Data Source - https://covidindia.org/Maharashtra
 * Python Version - 3.8.3
 * Libraries used - Geopandas, Matplotlib, Seaborn, Pandas.
-* Content referred - https://github.com/theengineeringguy-yt
 * Creators - https://github.com/Rahul-Khairnar, https://github.com/human-doodle
 
 ## Data Collection & Pre-processing
